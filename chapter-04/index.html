@@ -1,9 +1,13 @@
 <html>
 <head>
   <title>Vue.js Pet Depot</title>
+
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.5/es6-shim.js"></script>
   <script src="https://unpkg.com/vue"></script>
   <link rel="stylesheet" type="text/css" href="assets/css/app.css"/>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 </head>
 <div id="app">
   <header>
@@ -143,6 +147,7 @@
   </main>
 
 </div>
+
     <script type="text/javascript">
     var APP_LOG_LIFECYCLE_EVENTS = true;
     var webstore = new Vue({
@@ -186,23 +191,23 @@
         addToCart: function() {
           this.cart.push( this.product.id );
         },
-        showCheckout() {
+        showCheckout : function() {
           this.showProduct = this.showProduct ? false: true;
         },
-        submitForm() {
+        submitForm: function() {
           alert('Submitted');
         }
       },
       computed: {
-        cartItemCount() {
+        cartItemCount : function() {
           return this.cart.length || '';
         },
-        canAddToCart() {
+        canAddToCart : function() {
           return this.product.availableInventory > this.cartItemCount;
         }
       },
       filters: {
-        formatPrice(price) {	//#B
+        formatPrice: function(price)  {	//#B
           if (!parseInt(price)) { return ""; }	//#C
           if (price > 99999) {	//#D
             var priceString = (price / 100).toFixed(2);	//#E
